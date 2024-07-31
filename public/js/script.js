@@ -207,7 +207,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     alert('Login successful');
                     window.location.href = '/admin/adminHome';
                 } else {
-                    // Try to handle HTML error pages gracefully
                     const text = await response.text();
                     console.error('Response Error:', text);
                     alert('Error: ' + (text || 'An unexpected error occurred'));
@@ -226,10 +225,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-
-
-
-
 });
 
 function getCookie(name) {
@@ -238,39 +233,28 @@ function getCookie(name) {
     if (parts.length === 2) return parts.pop().split(';').shift();
 }
 
-// Get the modal
 var modal = document.getElementById("myModal");
-
-// Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
-
-// Get all blog cards
 var cards = document.querySelectorAll('.card');
 
-// Add event listeners to each card
+
 cards.forEach(card => {
     card.addEventListener('click', function () {
-        // Get blog details
         var title = this.querySelector('h3').innerText;
         var body = this.querySelector('p').innerText;
         var user = this.querySelector('.username').innerText;
 
-        // Set content in the modal
         document.getElementById('modalTitle').innerText = title;
         document.getElementById('modalBody').innerText = body;
         document.getElementById('modalUser').innerText = user;
 
-        // Show the modal
         modal.style.display = "block";
     });
 });
 
-// When the user clicks on <span> (x), close the modal
 span.onclick = function () {
     modal.style.display = "none";
 }
-
-// When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
     if (event.target == modal) {
         modal.style.display = "none";

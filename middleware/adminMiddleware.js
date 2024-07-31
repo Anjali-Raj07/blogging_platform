@@ -12,7 +12,6 @@ const adminMiddleware = (req, res, next) => {
         const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
         req.user = decoded.user;
 
-        // Check if the user is an admin
         if (req.user && req.user.isAdmin) {
             next();
         } else {

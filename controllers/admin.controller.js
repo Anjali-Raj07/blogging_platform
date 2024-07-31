@@ -34,7 +34,7 @@ const adminLogin = asyncHandler(async (req, res) => {
     res.cookie('token', accessToken, {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
-        maxAge: 30 * 60 * 1000 // 30 minutes
+        maxAge: 30 * 60 * 1000
     });
 
     res.status(200).json({ message: 'Login successful' });
@@ -48,7 +48,7 @@ const getAllUsers = asyncHandler(async (req, res) => {
     }
 });
 
-// Render the user editing page
+
 const editUserPage = asyncHandler(async (req, res) => {
     const userId = req.params.id;
     try {
@@ -64,7 +64,7 @@ const editUserPage = asyncHandler(async (req, res) => {
 
 
 
-// Update user information
+
 const updateUser = asyncHandler(async (req, res) => {
     // console.log('Update request received');
     // console.log('Request body:', req.body);
@@ -99,11 +99,11 @@ const deleteUser = asyncHandler(async (req, res) => {
 
 const getUserPosts = asyncHandler(async (req, res) => {
     const userId = req.params.id;
-    console.log('Fetching posts for user ID:', userId); // Debug log
+    console.log('Fetching posts for user ID:', userId); 
 
     try {
-        // Fetch posts by user ID
-        const posts = await blogs.find({ user_id: userId }); // Adjust according to your schema
+ 
+        const posts = await blogs.find({ user_id: userId }); 
 
         if (!posts) {
             return res.status(404).send('No posts found for this user.');

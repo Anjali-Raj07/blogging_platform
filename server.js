@@ -10,7 +10,7 @@ connectDB();
 
 const app = express();
 
-// Middleware
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -18,7 +18,6 @@ app.use(express.static('public'));
 app.use(cookieParser()); 
 
 
-// Set view engine
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views')); 
@@ -26,7 +25,6 @@ app.use(express.static(path.join(__dirname, '/css/style')));
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-// Route definitions
 
 app.use('/blogposts',authMiddleware , require('./routes/Blog.Route'));
 app.use('/users', require('./routes/users.Route'));
@@ -34,7 +32,6 @@ app.use('/',require('./routes/view.Route'))
 app.use('/admin',require('./routes/admin.Route'))
 
 
-// Error handling middleware
 
 app.use(errorHandler);
 

@@ -5,13 +5,13 @@ const authMiddleware = (req, res, next) => {
     console.log('Token:', token);
 
     if (!token) {
-        console.error('No token provided'); // Debugging log
+        console.error('No token provided'); 
         return res.status(401).json({ message: 'No token, authorization denied' });
     }
 
     try {
         const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
-        console.log('Decoded:', decoded); // Debugging log
+        console.log('Decoded:', decoded); 
         req.user = decoded.user;
         next();
     } catch (err) {
