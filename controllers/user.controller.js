@@ -72,7 +72,7 @@ const currentUser = asyncHandler(async (req, res) => {
     res.status(200).json(req.user);
 });
 
-// New method to get all users' IDs and usernames
+
 const getAllUsers = asyncHandler(async (req, res) => {
     const users = await User.find({}, 'username');
     res.status(200).json(users);
